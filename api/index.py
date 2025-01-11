@@ -15,14 +15,14 @@ def home():
 
 @app.route("/api")
 def api():
-    names = request.args.getlist("name")
+    query = request.args.getlist("name")
     with open(join("data", "marks.json"), "r") as file:
-        marks = json.load(file)
+        data = json.load(file)
 
     ans = []
-    for name in names:
-        if name in marks:
-            ans.append(marks[name])
+    for d in data:
+        if d['name'] in query:
+            ans.append(d['marks'])
 
     return jsonify({"marks": ans}), 200
 
