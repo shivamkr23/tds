@@ -19,4 +19,4 @@ def api():
         if d["name"] in query:
             ans.append(d["marks"])
 
-    return jsonify({"marks": ans}), 200
+    return jsonify({ "marks": ans }), 200
