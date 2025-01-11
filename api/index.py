@@ -1,11 +1,7 @@
-# api/index.py
-import json
-from http.server import BaseHTTPRequestHandler
+from flask import Flask
 
-class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type','application/json')
-        self.end_headers()
-        self.wfile.write(json.dumps({"message": "Hello!"}).encode('utf-8'))
-        return
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
