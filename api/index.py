@@ -13,9 +13,12 @@ class handler(BaseHTTPRequestHandler):
         names = query["name"]
 
         ans = []
-        for data in datas:
-            if data["name"] in names:
-                ans.append(data["marks"])
+
+        for name in names:
+            for data in datas:
+                if name == data["name"]:
+                    ans.append(data["marks"])
+
 
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
